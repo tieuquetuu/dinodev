@@ -4,14 +4,13 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let nextServer = require('next')
-let url = require('url')
+let appConfig = require('config')
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
-
 let app = express();
 
-const port = parseInt(app.get('env').PORT || '3000', 10)
+const port = parseInt(appConfig.port, 10)
 const dev = app.get('env') === 'development'
 let nextApp = nextServer({
     dev: dev,
