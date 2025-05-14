@@ -1,8 +1,10 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ApolloProvider } from "@apollo/client";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../theme';
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
+import ApolloLayout from "@/app/components/ApolloLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +32,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
-        <AppRouterCacheProvider>
+      <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            {children}
+              <ApolloLayout>
+                  { children }
+              </ApolloLayout>
           </ThemeProvider>
-        </AppRouterCacheProvider>
+      </AppRouterCacheProvider>
       </body>
     </html>
   );

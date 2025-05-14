@@ -13,7 +13,7 @@ let app = express();
 const port = parseInt(appConfig.port, 10)
 const dev = app.get('env') === 'development'
 let nextApp = nextServer({
-    dev: dev,
+    dev,
     port,
     // dir: './next-app' // Đảm bảo đường dẫn chính xác đến thư mục Next.js
 })
