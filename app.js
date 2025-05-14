@@ -4,7 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let nextServer = require('next')
-let appConfig = require('config')
+let appConfig = require('./config')
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -55,10 +55,12 @@ nextApp.prepare().then(() => {
         res.render('error');
     });
 
-    app.listen(port, (err) => {
-        if (err) throw err;
-        console.log(`> Ready on http://localhost:${port}`);
-    });
+    // app.listen(port, (err) => {
+    //     if (err) throw err;
+    //     console.log(`> Ready on http://localhost:${port}`);
+    // });
+
+    console.log(`> Ready on http://localhost:${port}`);
 });
 
 module.exports = app;
